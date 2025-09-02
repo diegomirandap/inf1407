@@ -17,3 +17,7 @@ interromper o container:
 
 informações sobre containers:
     $docker ps -a
+
+exemplo django:
+pag.350 slide aula 6 - 366 
+

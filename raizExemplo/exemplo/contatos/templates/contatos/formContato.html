@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{{ titulo_janela }}</title>
+<link rel="stylesheet" href="{% static 'contatos/css/estilo.css' %}">
+{% include 'contatos/header.html'%}
+</head>
+<body>
+    {% include 'contatos/links.html' %}
+    <h1>{{ titulo_pagina }}</h1>
+    <form method="POST" class='formulario'>
+        {% csrf_token %}
+        <table>
+            {{ formulario.as_table }}
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="btn btn-primary" value={{botao}}></td>
+                </tr>
+        </table>
+    </form>
+</body>
+</html>

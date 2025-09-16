@@ -2,22 +2,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cria Contato</title>
+    <title>{{ titulo_janela }}</title>
     <link rel="stylesheet"
         href="{% static 'contatos/css/estilo.css' %}">
         {% include 'contatos/header.html'%}
 </head>
 <body>
     {% include 'contatos/links.html' %}
-    <h1>Cria um contato</h1>
+    <h1>{{ titulo_pagina }}</h1>
     <form action="" method="POST">
         <fieldset style="width: max-content;">
             <legend>Formulário de Cadastro</legend>
             {% csrf_token %}
-            <table class='formulario'>
+            <table class="formulario">
                 {{ formulario.as_table }}
             </table>
-            <button type="submit" class="btn btn-prymary">Cria contato</button>
+            <button type="submit" class="btn btn-primary">{{ botao }}</button>
         </fieldset>
     </form>
 </body>

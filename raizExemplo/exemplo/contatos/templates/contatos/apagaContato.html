@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Apaga Contato</title>
+<link rel="stylesheet" href="{% static 'contatos/css/estilo.css' %}">
+{% include 'contatos/header.html'%}
+</head>
+<body>
+ {% include 'contatos/links.html' %}
+ <h1>Remoção de contatos</h1>
+ <form method="POST">
+ {% csrf_token %}
+ Confirmar a remoção de {{ pessoa }}?<br>
+ <button class ="btn btn-primary">
+ <a href="{% url 'contatos:lista-contatos' %}"
+ style="text-decoration: none; color: black;">Cancelar</a>
+ </button>
+ <input type="submit" class = "btn btn-danger" value="Remover">
+ </form>
+</body>
+</html>

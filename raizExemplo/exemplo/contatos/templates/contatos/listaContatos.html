@@ -17,9 +17,9 @@
                 <td>{{ pessoa.nome }}</td>
                 <td>{{pessoa.idade }}</td>
                 <td>{{ pessoa.salario }}</td>
-                <!--
-           
-                -->
+                
+                <td><a href="{% url 'contatos:atualiza-contato' pk=pessoa.id %}" class = "btn btn-success">Atualizar</a> | 
+                <a href="{% url 'contatos:deleta-contato' pk=pessoa.id %}" class = "btn btn-danger">Deletar</a></td>
             </tr>
         {% empty %}
             <tr><th colspan="4">Ainda não tem contatos cadastrados</th></tr>

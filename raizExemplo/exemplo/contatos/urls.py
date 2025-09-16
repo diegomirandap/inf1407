@@ -10,4 +10,8 @@ urlpatterns = [
         name='home-contatos'),
     path('cria/', views.ContatoCreateView.as_view(),
         name='cria-contatos'),
+    path('atualiza/<int:pk>/', views.ContatoUpdateView.as_view(),
+        name='atualiza-contato'),
+    path('deleta/<int:pk>/', views.ContatoDeleteView.as_view(),
+        name='deleta-contato')
 ]

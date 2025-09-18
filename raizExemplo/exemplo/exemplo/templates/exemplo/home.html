@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage do site</title>
+</head>
+<body>
+    <h1>Home Page do meu Site</h1>
+    <p>Bem vindo ao meu site seguro</p>
+    <a>Este é um exemplode site seguro</a>
+    <h2>Links para nossas aplicações</h2>
+    <u1>
+        <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        <li><a href="{% url 'homeSec' %}">Área de Segurança</a></li>
+        <li><a href="{% url 'contatos:lista-contatos' %}">Contatos</a></li>
+    </u1>
+</body>
+</html>

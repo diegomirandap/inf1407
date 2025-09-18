@@ -53,7 +53,7 @@ class ContatoUpdateView(View):
             'formulario': formulario, 
             'titulo_janela': 'Atualização de Contato',
             'titulo_pagina': 'Atualiza Contato',
-            'botao': 'Atualiza',
+            'botao': 'Atualizar',
             }
         return render(request, 'contatos/formContato.html', contexto)
 

@@ -1,0 +1,13 @@
+{% extends 'seguranca/base.html' %}
+{% block titulo %} Home - Site Seguro {% endblock %}
+{% block conteudo %}
+    <h2>Registro de novo usuário</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <table class = "formulario">
+            <th>
+                {{ form.as_table }}
+                <td><input type="submit" class="btn btn-primary" value=Registrar></td>
+            </th>
+        </table>
+{% endblock %}

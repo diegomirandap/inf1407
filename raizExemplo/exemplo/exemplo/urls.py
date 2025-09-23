@@ -19,6 +19,11 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from exemplo import views
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
+from django.urls.base import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.views import PasswordChangeDoneView
 
 urlpatterns = [
     path("admin/", admin.site.urls, name='admin'),
@@ -26,5 +31,17 @@ urlpatterns = [
     #path("", include('contatos.urls')),
     path("", views.home, name="home"), 
     path("seguranca/", views.homeSec, name="homeSec"),
-    path("seguranca/registro", views.registro, name="registroSec")
+    path("seguranca/registro", views.registro, name="registroSec"),
+    path("seguranca/login/", LoginView.as_view(template_name='seguranca/login.html'), name='loginSec'),
+    path("accounts/login/", LoginView.as_view(template_name='seguranca/login.html')), # Redireciona para login se não autenticado
+    path("seguranca/pagSec", views.pagSecreta, name="pagSecretaSec"),
+    path("meuLogout/", views.logout, name="meuLogoutSec"), # Confirmar logout
+    path("seguranca/logut", LogoutView.as_view(next_page=reverse_lazy('homeSec')), name='logoutSec'), # Link para efetuar logout
+    path("seguranca/passwordChange/", 
+        PasswordChangeView.as_view(template_name='seguranca/passwordChangeForm.html', 
+                                    success_url=reverse_lazy('passwordChangeDoneSec')), 
+        name='passwordChangeSec'),
+    path("seguranca/passwordChangeDone/", 
+        PasswordChangeDoneView.as_view(template_name='seguranca/passwordChangeDone.html'), 
+        name='passwordChangeDoneSec'),
 ]

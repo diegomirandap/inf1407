@@ -104,7 +104,9 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
+# Configuração para envio de e-mails (usado na recuperação de senha)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

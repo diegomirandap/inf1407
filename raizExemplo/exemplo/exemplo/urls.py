@@ -24,14 +24,27 @@ from django.contrib.auth.views import LogoutView
 from django.urls.base import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.views import PasswordChangeDoneView
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
+from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib.auth.models import User
+from django.views.generic.edit import UpdateView
 
 urlpatterns = [
-    path("admin/", admin.site.urls, name='admin'),
-    path("contatos/", include('contatos.urls')),
+    path("admin/", 
+        admin.site.urls, 
+        name='admin'),
+    path("contatos/", 
+        include('contatos.urls')),
     #path("", include('contatos.urls')),
-    path("", views.home, name="home"), 
-    path("seguranca/", views.homeSec, name="homeSec"),
-    path("seguranca/registro", views.registro, name="registroSec"),
+    path("", 
+        views.home, 
+        name="home"), 
+    path("seguranca/", 
+        views.homeSec, 
+        name="homeSec"),
+    path("seguranca/registro", 
+        views.registro, 
+        name="registroSec"),
     path("seguranca/login/", LoginView.as_view(template_name='seguranca/login.html'), name='loginSec'),
     path("accounts/login/", LoginView.as_view(template_name='seguranca/login.html')), # Redireciona para login se não autenticado
     path("seguranca/pagSec", views.pagSecreta, name="pagSecretaSec"),
@@ -40,8 +53,42 @@ urlpatterns = [
     path("seguranca/passwordChange/", 
         PasswordChangeView.as_view(template_name='seguranca/passwordChangeForm.html', 
                                     success_url=reverse_lazy('passwordChangeDoneSec')), 
-        name='passwordChangeSec'),
+        name='passwordChangeSec'
+    ),
     path("seguranca/passwordChangeDone/", 
         PasswordChangeDoneView.as_view(template_name='seguranca/passwordChangeDone.html'), 
-        name='passwordChangeDoneSec'),
+        name='passwordChangeDoneSec'
+    ),
+    path("seguraca/editarPerfil/<int:pk>/",
+        UpdateView.as_view(template_name='seguranca/userForm.html',
+                          model=User,
+                          fields=['first_name', 'last_name', 'email'],
+                          success_url=reverse_lazy('homeSec')
+        ),
+        name='editarPerfilSec'
+    ),
+    path('seguranca/password_reset/', 
+        PasswordResetView.as_view(template_name='seguranca/passwordResetForm.html',
+                                success_url=reverse_lazy('password_reset_done'),
+                                html_email_template_name='seguranca/passwordResetEmail.html',
+                                subject_template_name='seguranca/passwordResetSubject.txt',
+                                from_email='webmaster@meslin.com.br',
+        ),
+        name='password_reset'
+    ),
+    path('seguranca/password_reset_done/', 
+        PasswordResetDoneView.as_view(template_name='seguranca/passwordResetDone.html',),
+        name='password_reset_done'
+    ),
+    path('seguranca/password_reset_confirm/<uidb64>/<token>/',
+        PasswordResetConfirmView.as_view(template_name='seguranca/passwordResetConfirm.html',
+                                        success_url=reverse_lazy('password_reset_complete'),
+        ), 
+        name='password_reset_confirm'
+    ),
+    path('seguranca/password_reset_complete/',
+        PasswordResetCompleteView.as_view(template_name='seguranca/passwordResetComplete.html'), 
+        name='password_reset_complete'
+    ),
+
 ]

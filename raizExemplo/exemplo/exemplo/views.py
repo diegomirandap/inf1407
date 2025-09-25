@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
+
 def home(request):
     '''
     Exibe a página inicial do site
@@ -19,7 +20,7 @@ def registro(request):
     '''
     Exibe a página de registro de usuário
     usuario1
-    s@12345678
+    s@123456789
     '''
     if request.method == 'POST':
         # Processa o formulário de registro aqui

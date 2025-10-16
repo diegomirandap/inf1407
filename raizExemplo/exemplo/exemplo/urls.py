@@ -90,5 +90,8 @@ urlpatterns = [
         PasswordResetCompleteView.as_view(template_name='seguranca/passwordResetComplete.html'), 
         name='password_reset_complete'
     ),
+    path('exemplosback/',
+        include('exemplosback.urls')
+    ),
 
 ]

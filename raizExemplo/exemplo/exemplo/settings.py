@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "exemplo",
     "exemplosback",
     "rest_framework",
+    "carros",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,15 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+]
+
+# Para permitir CORS
+CORS_ORIGIN_WHITELIST = [
+    'http://0.0.0.0:8080',
+    'http://127.0.0.1:8080',
+    'http://localhost:8080',
+    # Adicione outras origens permitidas, se necessário
 ]
 
 ROOT_URLCONF = "exemplo.urls"
@@ -85,8 +96,17 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
-    }
+    },
+    "DBMTCars": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "mtcars.sqlite3",
+    },
 }
+
+    #carros: nome da app
+    #db_routers: nome do módulo
+    #MTCarsRouter: nome da classe de roteamento
+DATABASES_ROUTERS = ['carros.db_routers.DBRouter',]
 
 
 # Password validation

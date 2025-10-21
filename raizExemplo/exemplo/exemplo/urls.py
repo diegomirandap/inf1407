@@ -93,5 +93,7 @@ urlpatterns = [
     path('exemplosback/',
         include('exemplosback.urls')
     ),
-
+    path('carros/',
+        include('carros.urls')
+    ),
 ]

@@ -28,3 +28,6 @@ copie a partir de /seguranca....
 
 
 /workspaces/inf1407/Typescript/typescript (main) $ tsc -w
+
+
+.../inf1407/frontRaizExemplo/Web/public (main) $ python -m http.server 8080

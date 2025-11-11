@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "carros",
     "corsheaders",
+    "drf_yasg",
+    "coreapi",
 ]
 
 MIDDLEWARE = [
@@ -130,6 +132,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Configuração para envio de e-mails (usado na recuperação de senha)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS':
+    'rest_framework.schemas.coreapi.AutoSchema'
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

@@ -3,3 +3,5 @@ djangorestframework
 django-cors-headers
 pillow # For image handling
 setuptools
+coreapi
+drf-yasg

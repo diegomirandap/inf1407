@@ -6,5 +6,9 @@ urlpatterns = [
     path("lista/",
         views.CarsView.as_view(),
         name='lista-carros'
+    ),
+    path("umcarro/",
+         views.CarView.as_view(),
+         name='um-carro',
     )
 ]

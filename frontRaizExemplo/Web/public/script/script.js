@@ -29,3 +29,8 @@ function exibeListaDeCarros() {
         console.error("Erro:", error);
     });
 }
+onload = function () {
+    document.getElementById('insere').
+        addEventListener('click', evento => { location.href = 'insereCarro.html'; });
+    exibeListaDeCarros(); // exibe lista de carros ao carregar a página
+};
